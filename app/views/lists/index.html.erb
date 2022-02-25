@@ -1,13 +1,17 @@
-<div class="container col-8">
-<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://media.istockphoto.com/photos/empty-red-armchairs-of-a-theater-ready-for-a-show-picture-id1295114854?b=1&k=20&m=1295114854&s=170667a&w=0&h=W9ZbN674554Jsamxo5AfoO3DrSm_7qYS1EnANgusi9o=)">
-<h1>Movie Lists</h1>
-</div>
-<div class="cards">
-  <% @lists.each do |list| %>
-  <li class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://berita.radarcirebon.com/wp-content/uploads/sites/30/2020/04/titanic_movie-hd-1.jpg)"><%= link_to list.name, list_path(list)%></li>
-  <% end %>
-</div>
-<%= link_to new_list_path do%>
-  <i class="fas fa-plus btn btn-ghost">  Create a list</i>
-<% end %>
+  <div class="navbar navbar-light bg-light">
+    <div class="btn btn-sm btn-outline-secondary">
+      <%= link_to new_list_path do%>
+        <i class="fas fa-plus btn btn-ghost">  Create a list</i>
+      <% end %>
+    </div>
+  </div>
+  <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://media.istockphoto.com/photos/empty-red-armchairs-of-a-theater-ready-for-a-show-picture-id1295114854?b=1&k=20&m=1295114854&s=170667a&w=0&h=W9ZbN674554Jsamxo5AfoO3DrSm_7qYS1EnANgusi9o=)">
+  <h1>Movie Lists</h1>
+  </div>
+<div class="container">
+  <div class="cards">
+    <% @lists.each do |list| %>
+    <li class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path list.photo.key, height: 300, crop: :fill %>')"><%= link_to list.name, list_path(list), class: "text-decoration-none f-light text-white"%></li>
+    <% end %>
+  </div>
 </div>
